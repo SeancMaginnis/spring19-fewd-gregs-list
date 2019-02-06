@@ -1,4 +1,4 @@
-import Auto from "../models/Auto.js";
+import Auto from "../../models/Auto.js";
 
 let _autos = []
 

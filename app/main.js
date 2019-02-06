@@ -1,4 +1,4 @@
-import AutosController from "./components/autos-controller.js";
+import AutosController from "./components/autos/autos-controller.js";
 
 //javascript entry point
 
