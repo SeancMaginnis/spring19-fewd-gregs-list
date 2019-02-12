@@ -1,6 +1,6 @@
 import AutosService from "./autos-service.js";
 
-let _autosService = new AutosService()
+let _autosService = new AutosService(drawAutos)
 
 function drawAutos() {
   let autos = _autosService.autos //this is a getter
@@ -8,7 +8,7 @@ function drawAutos() {
   autos.forEach(auto => {
     template += auto.draw() //resolves to the auto's html template found within Auto.js
   })
-  document.querySelector("#listings").innerHTML = template
+  document.querySelector("#listings").innerHTML = template;
 }
 
 
