@@ -19,16 +19,15 @@ export default class AutosController {
 
   addAuto(event) {
     event.preventDefault()
-    // console.log(event)
+    console.log(event)
     let form = event.target
     let formData = {
       make: form.make.value,
       model: form.model.value,
       year: form.year.value,
       price: form.price.value,
-      img: form.img.value,
-      color: form.color.value,
-      miles: form.miles.value,
+      imgUrl: form.img.value,
+      description: form.description.value
     }
     // console.log(formData)
     form.reset() //reset our form
@@ -37,6 +36,7 @@ export default class AutosController {
   }
 
   displayAutosForm() {
+    //generates the form
     let template = `
   <form onsubmit="app.controllers.autosController.addAuto(event)" class="p-3">
     <!-- form-group is a bootstrap class to style labels and inputs -->
@@ -61,16 +61,27 @@ export default class AutosController {
       <input type="url" name="img">
     </div>
     <div class="form-group">
-      <label for="color">Color</label>
-      <input type="text" name="color">
+      <label for="description">Description</label>
+      <textarea rows="4" type="text" name="description"></textarea>
     </div>
-    <div class="form-group">
-      <label for="miles">Miles</label>
-      <input type="text" name="miles">
+    <div class="d-flex">
+      <button type="submit">Create Listing</button>
+      <button type="button" class="btn btn-info" onclick="app.controllers.autosController.viewListings()">View Auto Listings</button>
     </div>
-    <button type="submit">Create Listing</button>
   </form>
   `
     document.querySelector(".form-dropzone").innerHTML = template
+  }
+
+  deleteAuto(autoId) {
+    _autosService.deleteAuto(autoId)
+  }
+
+  placeBid(id) {
+    _autosService.placeBid(id)
+  }
+
+  viewListings() {
+    _autosService.getAutos()
   }
 }
