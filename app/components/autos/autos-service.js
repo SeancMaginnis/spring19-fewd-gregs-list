@@ -2,7 +2,7 @@ import Auto from "../../models/Auto.js";
 
 // @ts-ignore
 let carAPI = axios.create({
-  baseURL: "https://bcw-gregslist.herokuapp.com/api/cars/",
+  baseURL: "https://bcw-gregslist.herokuapp.com/api/cars",
   timeout: 3000
 })
 
@@ -20,7 +20,7 @@ export default class AutosService {
 
   addAuto(formData) {
     //send POST request with the new car data
-      //if successful then send a GET request to get all the cars
+    //if successful then send a GET request to get all the cars
     carAPI.post('', formData)
       .then(() => {
         this.getAutos()
@@ -40,7 +40,7 @@ export default class AutosService {
 
   deleteAuto(autoId) {
     //send DELETE request with the target car id
-      //if successful then send a GET request to get all the cars
+    //if successful then send a GET request to get all the cars
     carAPI.delete(autoId)
       .then(res => {
         console.log(res)
@@ -53,8 +53,8 @@ export default class AutosService {
     //from the id that's just a string we need to find the auto that has that id *hint: .find()*
     //increase the price of the found car by $50
     //use axios to send a PUT request and pass the new car price as a key value pair
-      //if successful then retrieve the updated info from the database
-    
+    //if successful then retrieve the updated info from the database
+
     let targetAuto = _autos.find(auto => auto._id == id)
     targetAuto.price *= 1.05
     carAPI.put(id, {
